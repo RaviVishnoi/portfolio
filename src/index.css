@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3498db;
+  --color-secondary: #2c3e50;
+  --color-accent: #e74c3c;
+  --color-light: #ecf0f1;
+  --color-success: #2ecc71;
+  --color-warning: #f39c12;
+}
+
+/* ─── Semantic Base Variables ─────────────────────────────── */
+:root {
+  /* Night is default fallback */
+  --bg: #020617;
+  --bg-rgb: 2,6,23;
+  --bg-section: #0F172A;
+  
+  /* Semantic Text */
+  --text-heading: #F8FAFC;
+  --text-body: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-accent: #7DD3FC;
+  
+  /* Buttons & Links */
+  --text-link: #38BDF8;
+  --text-link-hover: #7DD3FC;
+  --btn-bg: #2563EB;
+  --btn-text: #FFFFFF;
+  
+  /* Core Accent */
+  --accent: #38BDF8;
+  --accent-rgb: 56,189,248;
+  
+  /* Surfaces & Borders */
+  --card-bg: rgba(17,24,39,0.70);
+  --card-bg-hover: rgba(17,24,39,0.9);
+  --card-border: rgba(56,189,248,0.25);
+  --card-border-hover: rgba(56,189,248,0.6);
+  
+  --sky-gradient: linear-gradient(180deg, #020617 0%, #0F172A 100%);
+}
+
+/* ─── Morning Theme (Soft, Fresh, Clean) ──────────────────────── */
+html[data-theme='morning'] {
+  --bg: #F0F9FF;
+  --bg-rgb: 240,249,255;
+  --bg-section: #E0F2FE;
+  
+  --text-heading: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-accent: #0369A1;
+  
+  --text-link: #0369A1;
+  --text-link-hover: #075985;
+  --btn-bg: #0369A1;
+  --btn-text: #FFFFFF;
+  
+  --accent: #7DD3FC;
+  --accent-rgb: 125,211,252;
+  
+  --card-bg: rgba(255,255,255,0.75);
+  --card-bg-hover: rgba(255,255,255,0.95);
+  --card-border: #BAE6FD;
+  --card-border-hover: rgba(125,211,252,0.6);
+  
+  --sky-gradient: linear-gradient(180deg, #E0F2FE 0%, #F0F9FF 100%);
+}
+
+/* ─── Afternoon Theme (Bright, Professional) ────────────── */
+html[data-theme='afternoon'] {
+  --bg: #E0F2FE;
+  --bg-rgb: 224,242,254;
+  --bg-section: #BAE6FD;
+  
+  --text-heading: #0F172A;
+  --text-body: #1E293B;
+  --text-muted: #475569;
+  --text-accent: #075985;
+  
+  --text-link: #075985;
+  --text-link-hover: #0C4A6E;
+  --btn-bg: #0369A1;
+  --btn-text: #FFFFFF;
+  
+  --accent: #0EA5E9;
+  --accent-rgb: 14,165,233;
+  
+  --card-bg: rgba(255,255,255,0.82);
+  --card-bg-hover: rgba(255,255,255,1);
+  --card-border: #7DD3FC;
+  --card-border-hover: rgba(14,165,233,0.6);
+  
+  --sky-gradient: linear-gradient(180deg, #7DD3FC 0%, #E0F2FE 100%);
+}
+
+/* ─── Evening / Sunset Theme (Cinematic) ────────────────── */
+html[data-theme='evening'] {
+  --bg: #172554;
+  --bg-rgb: 23,37,84;
+  --bg-section: #1E1B4B;
+  
+  --text-heading: #FFFFFF;
+  --text-body: #E2E8F0;
+  --text-muted: #CBD5E1;
+  --text-accent: #FDE68A;
+  
+  --text-link: #FDE68A;
+  --text-link-hover: #FFFFFF;
+  --btn-bg: #F97316;
+  --btn-text: #FFFFFF;
+  
+  --accent: #FB923C;
+  --accent-rgb: 251,146,60;
+  
+  --card-bg: rgba(15,23,42,0.55);
+  --card-bg-hover: rgba(15,23,42,0.75);
+  --card-border: rgba(255,255,255,0.20);
+  --card-border-hover: rgba(251,146,60,0.8);
+  
+  --sky-gradient: linear-gradient(180deg, #A855F7 0%, #FB7185 40%, #FB923C 80%, #F97316 100%);
+}
+
+/* ─── Night Theme (Cybersecurity) ───────────────────────── */
+html[data-theme='night'] {
+  --bg: #020617;
+  --bg-rgb: 2,6,23;
+  --bg-section: #0F172A;
+  
+  --text-heading: #F8FAFC;
+  --text-body: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-accent: #7DD3FC;
+  
+  --text-link: #38BDF8;
+  --text-link-hover: #7DD3FC;
+  --btn-bg: #2563EB;
+  --btn-text: #FFFFFF;
+  
+  --accent: #38BDF8;
+  --accent-rgb: 56,189,248;
+  
+  --card-bg: rgba(15,23,42,0.70);
+  --card-bg-hover: rgba(15,23,42,0.9);
+  --card-border: rgba(56,189,248,0.25);
+  --card-border-hover: rgba(56,189,248,0.6);
+  
+  --sky-gradient: linear-gradient(180deg, #020617 0%, #0F172A 100%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--bg);
+    color: var(--text-body);
+    transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out, border-color 1.5s ease-in-out;
+  }
+
+  /* Global Typography Enforcement */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-heading) !important;
+    transition: color 1.5s ease-in-out;
+  }
+  
+  p, span, li, a {
+    transition: color 1.5s ease-in-out, background-color 1.5s ease-in-out;
+  }
+  
+  a {
+    color: var(--text-link);
+  }
+  a:hover {
+    color: var(--text-link-hover);
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-body);
+    @apply backdrop-blur-md rounded-2xl shadow-xl transition-all duration-500;
+  }
+  
+  .glass-card:hover {
+    background: var(--card-bg-hover);
+    border-color: var(--card-border-hover);
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.12)];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--text-heading)] to-[var(--text-accent)];
+  }
+
+  /* Core Semantic Utility Overrides */
+  .text-theme-muted {
+    color: var(--text-muted) !important;
+  }
+  
+  .text-theme-accent {
+    color: var(--text-accent) !important;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(var(--accent-rgb), 0.3);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--accent-rgb), 0.6);
+  }
+}
+
+/* ─── Aggressive Tailwind Utility Overrides ────────────────────────────── */
+
+/* Force all standard body text utilities to use the semantic body color */
+.text-gray-100, .text-gray-200, .text-gray-300, 
+.text-slate-100, .text-slate-200, .text-slate-300, 
+.text-white {
+  color: var(--text-heading) !important;
+}
+
+/* Force all muted text utilities to use the semantic muted color */
+.text-gray-400, .text-gray-500, 
+.text-slate-400, .text-slate-500 {
+  color: var(--text-muted) !important;
+}
+
+/* Force all cyan/accent text utilities to use the semantic accent color */
+.text-cyan-300, .text-cyan-400, .text-cyan-500, .text-blue-400, .text-blue-500 {
+  color: var(--text-accent) !important;
+}
+
+/* Button & UI Element Background Overrides */
+.bg-cyan-500, .bg-blue-600 {
+  background-color: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+}
+.hover\:bg-cyan-400:hover, .hover\:bg-blue-500:hover {
+  background-color: var(--text-accent) !important;
+  color: var(--btn-text) !important;
+}
+
+/* Border Overrides */
+.border-white\/10, .border-white\/5, .border-cyan-500\/30, .border-cyan-500\/50 {
+  border-color: var(--card-border) !important;
+}
+
+/* Header/Navbar Overrides */
+header {
+  border-bottom-color: var(--card-border) !important;
+}
+
+/* Ensure background alternations are fully transparent to show environment */
+.bg-\[\#05070a\], .bg-\[\#080b12\] {
+  background-color: transparent !important;
+}
+
+/* ─── Evening Specific Overrides ────────────── */
+html[data-theme='evening'] header {
+  background: rgba(45, 27, 46, 0.85) !important;
+  border-bottom-color: rgba(249,115,22,0.2) !important;
+}
+html[data-theme='evening'] .text-cyan-400 {
+  color: #f97316 !important; /* Orange accent for evening */
+}
+html[data-theme='evening'] .text-cyan-500 {
+  color: #fb923c !important; 
+}
+html[data-theme='evening'] .bg-cyan-500 {
+  background-color: #f97316 !important; 
+}
+html[data-theme='evening'] .bg-cyan-500\/10 {
+  background-color: rgba(249,115,22,0.1) !important; 
+}
+html[data-theme='evening'] .border-cyan-500\/50 {
+  border-color: rgba(249,115,22,0.5) !important; 
+}

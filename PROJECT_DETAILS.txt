@@ -1,0 +1,338 @@
+PROJECT DETAILS
+===============
+
+Project name
+------------
+Ravi Vishnoi - Web Developer and Cybersecurity Portfolio
+
+Project type
+------------
+Single-page responsive personal portfolio website.
+The project is a static frontend made with HTML, CSS, and vanilla JavaScript.
+There is no backend or build system. Open index.html in a browser to run it.
+
+Folder and file structure
+-------------------------
+/
+|-- index.html          Main page markup and all portfolio sections
+|-- style.css           Global styles, layout, colors, cards, animations, responsive rules
+|-- script.js           UI interactions, filtering, tabs, form behavior, animations
+|-- icon/               Technology, social, contact, and skill icons
+|-- img/                Profile, certificate, and project images
+|-- PROJECT_DETAILS.txt This project layout and implementation documentation
+
+Page layout order
+-----------------
+1. Fixed Header
+2. Hero section
+3. About Me section
+4. Technical Skills section
+5. Certifications section
+6. Featured Projects section
+7. Education section
+8. Contact section
+9. Footer
+
+1. Header
+---------
+HTML location: index.html, header element
+CSS selectors: header, .header-content, .logo, .main-nav, .social-links
+
+The header is fixed at the top of the viewport and contains:
+- Animated text logo: <RAVI_VISHNOI/>
+- Tagline: Full Stack Developer | Cybersecurity Specialist
+- Navigation links: About, Skills, Projects, Education, Contact
+- Social links for GitHub, LinkedIn, and email
+
+Navigation targets:
+- About -> #about
+- Skills -> #skills
+- Projects -> #projects
+- Education -> #education
+- Contact -> #contact
+
+Social links:
+- GitHub: https://github.com/RaviVishnoi
+- LinkedIn: https://linkedin.com/in/ravivishnoi
+- Email: mailto:ravivishnoi57@gmail.com
+
+2. Hero section
+---------------
+HTML location: index.html, section.hero
+CSS selectors: .hero, .hero-content, .hero-text, .hero-image, .code-snippet
+
+Content:
+- Heading: Secure & Scalable Web Solutions
+- Description: Building robust applications with security-first approach
+- Primary action: View Projects
+- Secondary action: Contact Me
+- Dark code window showing a secure application development example
+
+The hero uses a two-column flex layout on larger screens. At widths up to 992px,
+the text and code window are stacked vertically.
+
+3. About Me section
+-------------------
+HTML location: index.html, section#about
+CSS selectors: .about-content, .about-image, .image-frame, .about-text
+
+Content:
+- Profile image: img/ravi vishnoi.png
+- Introduction to Ravi Vishnoi as a full-stack developer and cybersecurity specialist
+- Development and Security tabs
+- Experience statistics:
+  - 50+ Projects Completed
+  - 100% Secure Applications
+  - 5+ Security Certifications
+
+Tabs:
+- Development tab describes 3+ years of web development experience.
+- Security tab describes CEH/CND certifications and secure development practices.
+
+4. Technical Skills section
+---------------------------
+HTML location: index.html, section#skills
+CSS selectors: .skills-container, .skill-category, .skill-items, .skill-item
+
+Three skill categories are displayed as cards:
+
+Web Development:
+- HTML5, skill level 95
+- CSS3, skill level 90
+- JavaScript, skill level 85
+- React, skill level 80
+- Node.js, skill level 75
+
+Cybersecurity:
+- Ethical Hacking, skill level 85
+- Network Defense, skill level 80
+- Vulnerability Assessment, skill level 75
+- Penetration Testing, skill level 70
+
+Tools & Technologies:
+- Git, skill level 90
+- Linux, skill level 85
+- CLI, skill level 80
+- SQL/NoSQL, skill level 75
+
+The data-skill attribute is read by script.js to create and animate skill bars.
+
+5. Certifications section
+-------------------------
+HTML location: index.html, section.certifications
+CSS selectors: .certifications-grid, .cert-card, .cert-img, .cert-info
+
+Five clickable certification cards open the certificate image in a new browser tab:
+- Cybersecurity Mentor - EC-Council | 2024
+- Certified Ethical Hacker Practical - EC-Council | 2024
+- Certified Ethical Hacker - EC-Council | 2023
+- Certified Network Defender - EC-Council | 2023
+- Cisco CyberOps Associate - Cisco | 2023
+
+6. Featured Projects section
+----------------------------
+HTML location: index.html, section#projects
+CSS selectors: .project-filters, .projects-grid, .project-card
+
+Project filter buttons:
+- All
+- Web Development
+- Security
+
+Project cards:
+
+StoreToDoor
+- Category: web
+- Description: Full-featured online store with PCI-DSS compliance
+- Technologies shown: HTML5, CSS3, JS
+- Implementation description mentions React, Node.js, MongoDB, secure payments, and encryption
+- Code: https://github.com/RaviVishnoi/StoreToDoor/blob/master/index.html
+- Live demo: https://ravivishnoi.github.io/StoreToDoor/
+- Image: img/StoreToDoor.png
+
+Network Vulnerability Scanner
+- Category: security
+- Description: Automated security assessment tool
+- Technologies: Python, Nmap, OWASP ZAP
+- Links are currently placeholder links using #
+- Image: img/vulnerability-scanner.jpg
+
+Bhavishyavani / Secure ERP System
+- Category: web
+- Description: Role-based access control system
+- Technologies: PHP, MySQL, JWT
+- Code: https://github.com/RaviVishnoi/Bhavishyavani/blob/main/index.html
+- Live demo: https://ravivishnoi.github.io/Bhavishyavani/
+- Image: img/Bhavishyavani.png
+
+Project cards have image hover overlays, technology tags, and code/demo buttons.
+
+7. Education section
+--------------------
+HTML location: index.html, section#education
+CSS selectors: .timeline, .timeline-item, .timeline-date, .timeline-content
+
+Education timeline:
+- 2022 - 2024: Master of Computer Applications, Cybersecurity Specialization
+  JECRC University, Jaipur
+  Coursework: Network Security, Cryptography, Ethical Hacking, Digital Forensics,
+  Secure Web Development
+
+- 2019 - 2022: Bachelor of Computer Applications
+  Aishwarya College, Pali
+  Projects: Secure Chat Application, Network Packet Analyzer, E-Commerce Website
+
+The timeline is centered on desktop and changes to a left-aligned vertical layout on smaller screens.
+
+8. Contact section
+------------------
+HTML location: index.html, section#contact
+CSS selectors: .contact-content, .contact-info, .contact-methods, .contact-form
+
+Contact information:
+- Email: ravivishnoi57@gmail.com
+- Phone: +91 7240723262
+- Location: Jaipur, Rajasthan, India
+
+Contact form fields:
+- Name (required)
+- Email (required)
+- Subject (optional)
+- Message (required)
+
+The form is handled on the client side only. script.js validates required fields, shows a
+success alert, and resets the form. It does not send data to a server or email service.
+
+9. Footer
+---------
+HTML location: index.html, footer element
+
+Displays the copyright text for Ravi Vishnoi. script.js replaces the displayed year with
+the current year when the page loads.
+
+Visual design system
+--------------------
+CSS variables are defined in :root:
+- Primary: #3498db (blue)
+- Secondary/Dark: #2c3e50
+- Accent/Danger: #e74c3c
+- Light: #ecf0f1
+- Success: #2ecc71
+- Warning: #f39c12
+- Body text: #333
+- Muted text: #7f8c8d
+- Background: #f9f9f9
+- Card background: #fff
+- Shadow: 0 5px 15px rgba(0, 0, 0, 0.1)
+- Transition: all 0.3s ease
+
+General styling:
+- Font family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif
+- Smooth scrolling is enabled on the HTML element.
+- Main content is constrained to a 1200px maximum width.
+- Sections generally use 80px vertical padding.
+- Buttons and cards use small rounded corners and hover transitions.
+- Section headings are centered and have a blue underline.
+- Cards use white backgrounds, shadows, and lift-up hover effects.
+
+JavaScript behavior
+-------------------
+File: script.js
+
+1. DOMContentLoaded initialization
+All behavior is registered after the HTML document has loaded.
+
+2. Mobile menu
+A mobile menu button is created dynamically and inserted into .header-content.
+Clicking it toggles the .show class on the main navigation.
+
+3. Smooth navigation
+Internal links beginning with # are intercepted. The page scrolls smoothly to the target,
+leaving an 80px offset for the fixed header. The mobile menu closes after navigation.
+
+4. About tabs
+Clicking a .tab-btn removes active states from all tabs and activates the selected tab
+content using its data-tab value.
+
+5. Project filtering
+Filter buttons use data-filter values. Cards are shown when their data-category matches
+the selected filter, or when the All filter is selected. Hidden cards fade and move downward.
+
+6. Contact form
+Prevents the normal submit action, checks name/email/message, displays an alert, and resets
+the form after the simulated success message.
+
+7. Scroll reveal animations
+Skill items, certification cards, project cards, and timeline items start hidden and move
+into place when they enter the viewport. The check runs once on load and again on scroll.
+
+8. Header scroll effect
+After scrolling more than 100px, the header receives a translucent white background and a
+slightly stronger shadow. At the top, the original card background and shadow are restored.
+
+9. Skill bars
+For each .skill-item, script.js creates .skill-bar and .skill-progress elements. The
+progress width animates to the percentage stored in data-skill.
+
+Responsive behavior
+-------------------
+- Up to 992px:
+  - Hero columns stack vertically.
+  - About content stacks vertically.
+  - Contact content stacks vertically.
+  - Education timeline moves to a left-side vertical line.
+
+- Up to 768px:
+  - Header content stacks vertically.
+  - Navigation wraps and centers.
+  - Hero heading becomes smaller.
+  - Hero buttons stack vertically.
+  - Experience statistics stack vertically.
+  - Project grid becomes one column.
+
+- Up to 576px:
+  - Section padding reduces to 60px.
+  - Section headings and hero heading become smaller.
+  - Skill items use one column.
+
+Asset inventory
+---------------
+Images in img/:
+- ravi vishnoi.png             Profile image
+- StoreToDoor.png              StoreToDoor project image
+- Bhavishyavani.png            Bhavishyavani project image
+- vulnerability-scanner.jpg    Network scanner project image
+- Cybersecurity mentor.jpg     Cybersecurity Mentor certificate
+- CEHpractical.jpg             CEH Practical certificate
+- CEH.jpg                      CEH certificate
+- CND.jpg                      CND certificate
+- CyberOps.jpg                 Cisco CyberOps certificate
+
+Icons in icon/:
+- github.png, linkedin.png, twitter.png
+- communication.png, phone.png, map.png
+- html.png, css-3.png, java-script.png, atom.png, programing.png
+- ethical-hacking.png, cyber-security.png, vulnerability-assessment.png, penetration-testing.png
+- git.png, linux.png, terminal.png, sql-server.png
+
+Current implementation notes
+----------------------------
+- This remains a static frontend. Contact form submissions are simulated and are not persisted.
+- The Hero is an isolated React/TypeScript/Tailwind build in src/ and is mounted from hero-dist/;
+  the rest of the portfolio remains HTML/CSS/vanilla JavaScript.
+- The Hero component is src/components/ui/cyber-network-hero.tsx: a Canvas2D node network with
+  a looping secure-shell terminal, reduced-motion support, and the existing portfolio CTA anchors.
+- The Network Vulnerability Scanner report and GitHub buttons still use placeholder # links.
+- The project uses npm only to build the isolated Hero and its shadcn-style Button primitive.
+- index.html references icon images directly and does not include an external icon library.
+- The generated mobile menu button uses a Font Awesome class name, but no Font Awesome stylesheet
+  is linked in index.html; the button may therefore not display the expected bars icon.
+- The CSS contains some legacy selectors for <i> icons while the HTML primarily uses <img> icons.
+
+How to run
+----------
+1. Open the project folder in VS Code.
+2. Run npm run build:hero after changing files under src/.
+3. Open index.html directly in a browser, or use a static live-server extension.
+4. Scroll through the page to see hero scrubbing, reveal animations, and the header scroll effect.
+5. Test the About tabs, project filters, internal navigation, contact form, tilt cards, and desktop cursor.
