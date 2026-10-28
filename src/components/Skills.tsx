@@ -1,3 +1,4 @@
+import SectionHeader from './ui/SectionHeader';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cpu, Shield, Code2, Brain, Search, Film } from 'lucide-react';
@@ -82,21 +83,12 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 relative" style={{ background: 'var(--bg)' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold mb-4 inline-flex items-center gap-3 relative">
-            <Cpu size={36} className="text-cyan-500" />
-            <span className="text-gradient">Technical Arsenal</span>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-cyan-500 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.6)]"></div>
-          </h2>
-          <p className="text-theme-muted mt-6 max-w-2xl mx-auto">
-            Tools, technologies, and core competencies I utilize to secure networks and build robust applications. Click on any skill to learn more.
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge="CORE COMPETENCIES & STACK"
+          badgeIcon={Cpu}
+          title="Technical Arsenal"
+          subtitle="Tools, technologies, and core competencies I utilize to secure networks and build robust applications. Click on any skill to learn more."
+        />
 
         {/* Custom Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">

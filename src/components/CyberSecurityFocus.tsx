@@ -1,3 +1,4 @@
+import SectionHeader from './ui/SectionHeader';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -160,20 +161,12 @@ export default function CyberSecurityFocus() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold mb-4 inline-block relative">
-            <span className="text-gradient">Cyber Security Focus</span>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-cyan-500 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.6)]"></div>
-          </h2>
-          <p className="text-theme-muted mt-6 max-w-2xl mx-auto">
-            Specialized domains of expertise in protecting critical infrastructure, identifying vulnerabilities, and enforcing robust security postures.
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge="SECURITY DEFENSE & VAPT"
+          badgeIcon={ShieldAlert}
+          title="Cyber Security Focus"
+          subtitle="Specialized domains of expertise in protecting critical infrastructure, identifying vulnerabilities, and enforcing robust security postures."
+        />
 
         {/* 6 Core Security Domains Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">

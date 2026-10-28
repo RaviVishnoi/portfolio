@@ -268,17 +268,21 @@ header {
 
 /* ─── Evening Specific Overrides ────────────── */
 html[data-theme='evening'] .text-cyan-400 {
-  color: #f97316 !important; /* Orange accent for evening */
+  color: #fef08a !important; /* Luminous warm gold for high contrast against evening sunset */
 }
 html[data-theme='evening'] .text-cyan-500 {
-  color: #fb923c !important; 
+  color: #fde68a !important; 
 }
 html[data-theme='evening'] .bg-cyan-500 {
   background-color: #f97316 !important; 
+  color: #ffffff !important;
 }
 html[data-theme='evening'] .bg-cyan-500\/10 {
-  background-color: rgba(249,115,22,0.1) !important; 
+  background-color: rgba(15, 23, 42, 0.80) !important; 
 }
-html[data-theme='evening'] .border-cyan-500\/50 {
-  border-color: rgba(249,115,22,0.5) !important; 
+html[data-theme='evening'] .border-cyan-500\/50,
+html[data-theme='evening'] .border-cyan-500\/40,
+html[data-theme='evening'] .border-cyan-500\/30,
+html[data-theme='evening'] .border-cyan-500\/20 {
+  border-color: rgba(251, 146, 60, 0.5) !important; 
 }

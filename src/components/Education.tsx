@@ -1,3 +1,4 @@
+import SectionHeader from './ui/SectionHeader';
 
 import { motion } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
@@ -23,17 +24,12 @@ export default function Education() {
   return (
     <section id="education" className="py-24 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold mb-4 inline-block relative">
-            <span className="text-gradient">Education</span>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-cyan-500 rounded-full"></div>
-          </h2>
-        </motion.div>
+        <SectionHeader
+          badge="ACADEMIC FOUNDATION"
+          badgeIcon={GraduationCap}
+          title="Education"
+          subtitle="Formal academic education in computer science, ethical hacking, network defense, and advanced web technologies."
+        />
 
         <div className="relative border-l-2 border-white/10 ml-4 md:ml-0 md:border-none">
           {/* Desktop central line */}

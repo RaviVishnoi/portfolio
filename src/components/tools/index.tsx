@@ -1,3 +1,4 @@
+import SectionHeader from '../ui/SectionHeader';
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Wrench, Shield, Globe, Network, Search, Sparkles } from 'lucide-react';
@@ -38,23 +39,12 @@ export default function Tools() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Wrench size={14} /> Interactive Suite
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-black mb-4 inline-flex items-center gap-3 relative">
-            <span className="text-gradient">Cyber & Dev Toolkit</span>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 bg-cyan-500 rounded-full shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
-          </h2>
-          <p className="text-theme-muted mt-6 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            A battle-tested collection of interactive utilities for security auditors, network engineers, and full-stack developers. Fast, zero-leak, client-side processing.
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge="INTERACTIVE SECURITY & DEV SUITE"
+          badgeIcon={Wrench}
+          title="Cyber & Dev Toolkit"
+          subtitle="A battle-tested collection of interactive utilities for security auditors, network engineers, and full-stack developers. Fast, zero-leak, client-side processing."
+        />
 
         {/* Filter Tabs & Search Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">

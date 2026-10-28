@@ -80,11 +80,15 @@ export default function Projects() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            className="flex flex-col items-start"
           >
-            <h2 className="text-4xl font-bold inline-block relative">
+            <div className="mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-slate-900/85 dark:bg-black/75 border border-cyan-500/40 text-cyan-400 dark:text-cyan-300 backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+              <span>FEATURED SHOWCASE</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
               <span className="text-gradient">Featured Projects</span>
-              <div className="absolute -bottom-2 left-0 w-12 h-1 bg-cyan-500 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.6)]"></div>
             </h2>
+            <div className="h-1 w-20 mt-3 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500 shadow-[0_0_12px_rgba(6,182,212,0.8)]"></div>
           </motion.div>
 
           <motion.button

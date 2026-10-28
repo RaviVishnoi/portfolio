@@ -1,3 +1,4 @@
+import SectionHeader from './ui/SectionHeader';
 import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
@@ -19,17 +20,12 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 relative" style={{ background: 'var(--bg-section)' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold mb-4 inline-block relative">
-            <span className="text-gradient">Get In Touch</span>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-cyan-500 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.6)]"></div>
-          </h2>
-        </motion.div>
+        <SectionHeader
+          badge="CONNECT & COLLABORATE"
+          badgeIcon={Mail}
+          title="Get In Touch"
+          subtitle="I'm available for freelance work, security consulting, and full-time engineering roles. Let's discuss your next project."
+        />
 
         <div className="flex flex-col lg:flex-row gap-12">
           <motion.div 

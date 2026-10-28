@@ -1,3 +1,4 @@
+import SectionHeader from './ui/SectionHeader';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, X, ExternalLink, CheckCircle2 } from 'lucide-react';
@@ -97,24 +98,12 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-24 relative bg-[#05070a]">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-3">
-            <CheckCircle2 size={13} />
-            Verified Credentials & Accreditations
-          </div>
-          <h2 className="text-4xl font-bold mb-4 inline-block relative">
-            <span className="text-gradient">Certifications</span>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-cyan-500 rounded-full"></div>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base mt-2">
-            Industry-recognized credentials spanning Offensive & Defensive Cybersecurity, SOC Operations, and Generative AI.
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge="VERIFIED CREDENTIALS & ACCREDITATIONS"
+          badgeIcon={Award}
+          title="Certifications"
+          subtitle="Industry-recognized credentials spanning Offensive & Defensive Cybersecurity, SOC Operations, and Generative AI."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {certs.map((cert, idx) => (
