@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -17,22 +17,21 @@ export default function CustomCursor() {
 
     const updateHoverState = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if hovering over a clickable element
-      const isClickable = 
+      const isClickable =
         target.tagName.toLowerCase() === 'a' ||
         target.tagName.toLowerCase() === 'button' ||
         target.closest('a') ||
         target.closest('button') ||
         target.classList.contains('clickable');
-      
+
       setIsHovering(!!isClickable);
     };
 
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseover', updateHoverState);
+    window.addEventListener('mousemove', updateMousePosition, { passive: true });
+    window.addEventListener('mouseover', updateHoverState, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
@@ -50,7 +49,7 @@ export default function CustomCursor() {
     <>
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-cyan-500 rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-2 h-2 bg-cyan-400 rounded-full pointer-events-none z-[9999] mix-blend-difference"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
@@ -58,18 +57,18 @@ export default function CustomCursor() {
         }}
         transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
       />
-      
+
       {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-cyan-400 rounded-full pointer-events-none z-[9998] mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 border border-cyan-400/80 rounded-full pointer-events-none z-[9998] mix-blend-difference"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'rgba(6, 182, 212, 0.1)' : 'transparent',
-          borderWidth: isHovering ? '2px' : '1px'
+          scale: isHovering ? 1.4 : 1,
+          backgroundColor: isHovering ? 'rgba(6, 182, 212, 0.15)' : 'transparent',
+          borderWidth: isHovering ? '2px' : '1px',
         }}
-        transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.5 }}
+        transition={{ type: 'spring', stiffness: 200, damping: 20, mass: 0.5 }}
       />
     </>
   );

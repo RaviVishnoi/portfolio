@@ -10,6 +10,7 @@ export default function ProjectFilters({ activeFilter, setFilter }: ProjectFilte
     { id: 'manual', label: 'Manual Projects' },
     { id: 'web', label: 'Web' },
     { id: 'security', label: 'Security' },
+    { id: 'motion', label: 'Motion & Design' },
     { id: 'erp', label: 'ERP' },
     { id: 'tools', label: 'Tools' }
   ];

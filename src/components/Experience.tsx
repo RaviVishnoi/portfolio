@@ -67,7 +67,7 @@ const experienceData = [
   {
     id: 'softech-exec',
     period: 'March 2022 - Aug 2022',
-    role: 'Software Executive under PMKVY',
+    role: 'Software Executive under PMMVY',
     company: 'Softech Multi Services',
     location: 'India',
     icon: Briefcase,

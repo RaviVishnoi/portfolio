@@ -242,57 +242,165 @@ export default function CyberNetworkHero({
 
     const drawFrame = () => {
       context.clearRect(0, 0, width, height);
+      const isLight = theme === 'light';
+      const mouseActive = mouseX > -1000 && mouseY > -1000;
+      const mouseLinkDist = Math.max(220, linkDistance * 1.7);
+
       nodes.forEach((node) => {
         if (!reduceMotion) {
           node.x += node.vx;
           node.y += node.vy;
           if (node.x < 0 || node.x > width) node.vx *= -1;
           if (node.y < 0 || node.y > height) node.vy *= -1;
+
+          // Smooth magnetic pull toward cursor
+          if (mouseActive) {
+            const mDist = Math.hypot(node.x - mouseX, node.y - mouseY);
+            if (mDist < mouseLinkDist && mDist > 4) {
+              const pull = (1 - mDist / mouseLinkDist) * 0.40;
+              node.x += ((mouseX - node.x) / mDist) * pull;
+              node.y += ((mouseY - node.y) / mDist) * pull;
+            }
+          }
         }
       });
 
+      // 1. Inter-node network lines
       for (let firstIndex = 0; firstIndex < nodes.length; firstIndex += 1) {
         for (let secondIndex = firstIndex + 1; secondIndex < nodes.length; secondIndex += 1) {
           const first = nodes[firstIndex];
           const second = nodes[secondIndex];
           const distance = Math.hypot(first.x - second.x, first.y - second.y);
           if (distance > linkDistance) continue;
-          
-          // Boost opacity in light mode for better visibility against white background
-          const baseOpacity = theme === 'light' ? 0.8 : 0.35;
-          context.strokeStyle = `rgba(${palette.accentRgb},${(1 - distance / linkDistance) * baseOpacity})`;
-          
-          context.lineWidth = 1;
+
+          const p = 1 - distance / linkDistance;
+          if (isLight) {
+            // Darker high-contrast blue lines for light theme
+            context.strokeStyle = `rgba(3, 105, 161, ${0.15 + p * 0.35})`;
+            context.lineWidth = 1.3;
+          } else {
+            // Luminous lines for dark theme
+            context.strokeStyle = `rgba(${palette.accentRgb}, ${0.18 + p * 0.45})`;
+            context.lineWidth = 1.1;
+          }
+
           context.beginPath();
           context.moveTo(first.x, first.y);
           context.lineTo(second.x, second.y);
           context.stroke();
         }
+      }
 
-        const node = nodes[firstIndex];
-        const mouseDistance = Math.hypot(node.x - mouseX, node.y - mouseY);
-        const nearby = mouseDistance < linkDistance * 1.4;
-        
-        const mouseBaseOpacity = theme === 'light' ? 0.9 : 0.5;
-        
-        if (nearby && !reduceMotion) {
-          context.strokeStyle = `rgba(${palette.accentRgb},${(1 - mouseDistance / (linkDistance * 1.4)) * mouseBaseOpacity})`;
-          context.beginPath();
-          context.moveTo(node.x, node.y);
-          context.lineTo(mouseX, mouseY);
-          context.stroke();
+      // 2. Cursor Connection Lines
+      if (mouseActive && !reduceMotion) {
+        for (let firstIndex = 0; firstIndex < nodes.length; firstIndex += 1) {
+          const node = nodes[firstIndex];
+          const mouseDistance = Math.hypot(node.x - mouseX, node.y - mouseY);
+          if (mouseDistance < mouseLinkDist) {
+            const p = 1 - mouseDistance / mouseLinkDist;
+            context.save();
+            if (isLight) {
+              // Deep dark blue laser connection in light theme
+              context.shadowColor = 'rgba(2, 132, 199, 0.6)';
+              context.shadowBlur = 6;
+              context.strokeStyle = `rgba(2, 78, 122, ${0.35 + p * 0.5})`;
+              context.lineWidth = 1.6 + p * 1.5;
+            } else {
+              // Bright luminous light-cyan laser connection in dark theme
+              context.shadowColor = `rgba(${palette.accentRgb}, 0.95)`;
+              context.shadowBlur = 14;
+              context.strokeStyle = `rgba(224, 247, 255, ${0.45 + p * 0.55})`;
+              context.lineWidth = 1.6 + p * 1.6;
+            }
+
+            context.beginPath();
+            context.moveTo(node.x, node.y);
+            context.lineTo(mouseX, mouseY);
+            context.stroke();
+            context.restore();
+          }
         }
 
-        const nodeOpacityNearby = theme === 'light' ? 1 : 0.95;
-        const nodeOpacityFar = theme === 'light' ? 0.85 : 0.55;
-        
-        context.fillStyle = `rgba(${palette.accentRgb},${nearby ? nodeOpacityNearby : nodeOpacityFar})`;
-        context.beginPath();
-        context.arc(node.x, node.y, nearby ? 2.2 : 1.4, 0, Math.PI * 2);
-        context.fill();
+        // Central Cursor Power Beacon
+        context.save();
+        if (isLight) {
+          context.shadowColor = 'rgba(2, 132, 199, 0.8)';
+          context.shadowBlur = 12;
+          context.strokeStyle = 'rgba(2, 78, 122, 0.9)';
+          context.lineWidth = 2;
+          context.beginPath();
+          context.arc(mouseX, mouseY, 11, 0, Math.PI * 2);
+          context.stroke();
+
+          context.fillStyle = '#0f172a'; // Dark core in light mode
+          context.beginPath();
+          context.arc(mouseX, mouseY, 3.5, 0, Math.PI * 2);
+          context.fill();
+        } else {
+          context.shadowColor = `rgba(${palette.accentRgb}, 1.0)`;
+          context.shadowBlur = 18;
+          context.strokeStyle = 'rgba(224, 247, 255, 0.9)';
+          context.lineWidth = 2;
+          context.beginPath();
+          context.arc(mouseX, mouseY, 11, 0, Math.PI * 2);
+          context.stroke();
+
+          context.fillStyle = '#ffffff'; // Pure light core in dark mode
+          context.beginPath();
+          context.arc(mouseX, mouseY, 3.5, 0, Math.PI * 2);
+          context.fill();
+        }
+        context.restore();
+      }
+
+      // 3. Network Dots: LIGHT/BRIGHT in Dark Themes, DARK in Light Theme
+      for (let firstIndex = 0; firstIndex < nodes.length; firstIndex += 1) {
+        const node = nodes[firstIndex];
+        const mouseDistance = mouseActive ? Math.hypot(node.x - mouseX, node.y - mouseY) : 9999;
+        const nearby = mouseDistance < mouseLinkDist;
+
+        context.save();
+        if (isLight) {
+          // --- LIGHT THEME: SOLID DARK DOTS FOR HIGH CONTRAST ---
+          const radius = nearby ? 5.0 : 3.0;
+          context.shadowColor = 'rgba(2, 132, 199, 0.45)';
+          context.shadowBlur = nearby ? 8 : 4;
+
+          // Deep dark slate/navy dot (#0f172a)
+          context.fillStyle = nearby ? '#02182b' : '#0f172a';
+          context.beginPath();
+          context.arc(node.x, node.y, radius, 0, Math.PI * 2);
+          context.fill();
+
+          // Electric blue ring around nearby dots
+          if (nearby) {
+            context.strokeStyle = '#0284c7';
+            context.lineWidth = 1.5;
+            context.stroke();
+          }
+        } else {
+          // --- DARK THEME: LIGHT / BRIGHT / LUMINOUS DOTS ---
+          const radius = nearby ? 4.8 : 2.8;
+          context.shadowColor = `rgba(${palette.accentRgb}, 1.0)`;
+          context.shadowBlur = nearby ? 16 : 8;
+
+          // Luminous bright light-cyan / white dot (#f0f9ff / #ffffff)
+          context.fillStyle = nearby ? '#ffffff' : 'rgba(235, 248, 255, 0.95)';
+          context.beginPath();
+          context.arc(node.x, node.y, radius, 0, Math.PI * 2);
+          context.fill();
+
+          // Extra bright center star sparkle for nearby nodes
+          if (nearby) {
+            context.fillStyle = '#ffffff';
+            context.beginPath();
+            context.arc(node.x, node.y, radius * 0.5, 0, Math.PI * 2);
+            context.fill();
+          }
+        }
+        context.restore();
       }
     };
-
     const loop = () => {
       drawFrame();
       if (!reduceMotion) animationFrame = requestAnimationFrame(loop);

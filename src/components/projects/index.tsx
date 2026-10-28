@@ -1,6 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RefreshCw } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import { Project, manualProjects } from './types';
 import { fetchGitHubProjects } from './GitHubProjectService';
 import ProjectStats from './ProjectStats';
@@ -124,16 +129,67 @@ export default function Projects() {
                   <p>Try adjusting your search or filters.</p>
                 </div>
               ) : (
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  <AnimatePresence mode="popLayout">
+                <motion.div layout className="w-full relative pb-12">
+                  <Swiper
+                    modules={[Pagination, Navigation, Autoplay]}
+                    spaceBetween={32}
+                    slidesPerView={1}
+                    pagination={{ clickable: true, dynamicBullets: true }}
+                    navigation={{
+                      nextEl: '.project-swiper-next',
+                      prevEl: '.project-swiper-prev',
+                    }}
+                    autoplay={{ delay: 5000, disableOnInteraction: true }}
+                    breakpoints={{
+                      768: {
+                        slidesPerView: 2,
+                      },
+                      1024: {
+                        slidesPerView: 3,
+                      },
+                    }}
+                    className="projects-swiper !pb-14 pt-4 px-2"
+                  >
                     {filteredProjects.map((project) => (
-                      <ProjectCard 
-                        key={project.id} 
-                        project={project} 
-                        onClick={setSelectedProject} 
-                      />
+                      <SwiperSlide key={project.id} className="h-auto">
+                        <div className="h-full">
+                          <ProjectCard 
+                            project={project} 
+                            onClick={setSelectedProject} 
+                          />
+                        </div>
+                      </SwiperSlide>
                     ))}
-                  </AnimatePresence>
+                  </Swiper>
+                  
+                  {/* Custom Navigation Buttons (positioned appropriately) */}
+                  <div className="absolute top-1/2 -translate-y-1/2 left-[-16px] md:left-[-24px] z-10">
+                    <button className="project-swiper-prev flex items-center justify-center w-10 h-10 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg hover:shadow-cyan-500/30 group">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 group-hover:-translate-x-1 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                  </div>
+                  <div className="absolute top-1/2 -translate-y-1/2 right-[-16px] md:right-[-24px] z-10">
+                    <button className="project-swiper-next flex items-center justify-center w-10 h-10 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition-all shadow-lg hover:shadow-cyan-500/30 group">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                  </div>
+
+                  <style>{`
+                    .projects-swiper .swiper-pagination-bullet {
+                      background: var(--text-muted);
+                      opacity: 0.5;
+                    }
+                    .projects-swiper .swiper-pagination-bullet-active {
+                      background: var(--accent);
+                      opacity: 1;
+                    }
+                    /* Hide custom nav on very small screens to save space */
+                    @media (max-width: 640px) {
+                      .project-swiper-prev, .project-swiper-next {
+                        display: none !important;
+                      }
+                    }
+                  `}</style>
                 </motion.div>
               )}
             </>

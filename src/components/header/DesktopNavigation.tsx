@@ -2,9 +2,12 @@ import { motion } from 'framer-motion';
 
 export const navLinks = [
   { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Security', href: '#cyber-security' },
+  { name: 'Tools', href: '#tools' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Certs', href: '#certifications' },
   { name: 'Education', href: '#education' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -25,7 +28,7 @@ export default function DesktopNavigation({ activeSection }: DesktopNavigationPr
   };
 
   return (
-    <ul className="flex items-center gap-6 lg:gap-8 text-sm font-medium h-full">
+    <ul className="flex items-center gap-3 lg:gap-5 text-xs lg:text-sm font-medium h-full">
       {navLinks.map((link) => {
         const isActive = activeSection === link.href.substring(1);
         return (

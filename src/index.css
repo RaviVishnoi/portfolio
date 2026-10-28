@@ -267,10 +267,6 @@ header {
 }
 
 /* ─── Evening Specific Overrides ────────────── */
-html[data-theme='evening'] header {
-  background: rgba(45, 27, 46, 0.85) !important;
-  border-bottom-color: rgba(249,115,22,0.2) !important;
-}
 html[data-theme='evening'] .text-cyan-400 {
   color: #f97316 !important; /* Orange accent for evening */
 }

@@ -92,5 +92,15 @@ export const manualProjects: Project[] = [
     tech: ['Python', 'Nmap', 'OWASP ZAP'],
     source: 'manual',
     featured: true
+  },
+  {
+    id: 'manual-cyber-motion-graphics',
+    title: 'Cyber Security Motion & Visual FX Showcase',
+    category: ['motion', 'web', 'tools'],
+    description: 'High-impact motion graphics, animated cyber incident explainers, and UI interactive physics.',
+    fullDescription: 'A curated visual showcase featuring cybersecurity explainer animations, kinetic infographics, 3D particle cyber-defense simulations, and modern UI transitions designed using After Effects, Blender, Figma, and Framer Motion.',
+    tech: ['After Effects', 'Framer Motion', 'Figma', 'Blender', 'Premiere Pro'],
+    source: 'manual',
+    featured: true
   }
 ];

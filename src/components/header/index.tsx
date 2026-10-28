@@ -6,8 +6,13 @@ import CVButton from './CVButton';
 import MobileMenuButton from './MobileMenuButton';
 import MobileNavigation from './MobileNavigation';
 import ThemeController from '../ui/ThemeController';
+import { Search } from 'lucide-react';
 
-export default function Header() {
+interface HeaderProps {
+  onOpenPalette?: () => void;
+}
+
+export default function Header({ onOpenPalette }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -23,12 +28,9 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const observers = new Map();
-    
-    // Setup intersection observers for all nav targets
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -60% 0px', // Triggers when section is roughly in the middle
+      rootMargin: '-20% 0px -60% 0px',
       threshold: 0
     };
 
@@ -41,7 +43,6 @@ export default function Header() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-
     const sections = ['home', ...navLinks.map(l => l.href.substring(1))];
     
     sections.forEach(id => {
@@ -60,15 +61,11 @@ export default function Header() {
         isScrolled ? 'py-3' : 'py-6'
       }`}
     >
-      <div 
-        className={`max-w-7xl mx-auto px-4 sm:px-6 transition-all duration-500 ease-in-out ${
-          isScrolled ? 'w-[95%] lg:w-full' : 'w-full'
-        }`}
-      >
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 w-full">
         <div 
           className={`relative flex items-center justify-between transition-all duration-500 ease-in-out ${
             isScrolled 
-              ? 'px-6 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] border' 
+              ? 'px-4 lg:px-6 py-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] border' 
               : 'px-0 py-0 border-transparent'
           }`}
           style={isScrolled ? {
@@ -86,11 +83,21 @@ export default function Header() {
             <Logo />
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-8 h-full">
+            <div className="hidden md:flex items-center gap-1 lg:gap-3 h-full ml-auto">
               <DesktopNavigation activeSection={activeSection} />
-              <div className="flex items-center gap-4 lg:gap-6">
+              <div className="flex items-center gap-2 lg:gap-4 ml-1">
                 <SocialLinks />
-                <div className="border-l pl-4 lg:pl-6 flex items-center gap-4" style={{ borderColor: 'var(--card-border)' }}>
+                <div className="border-l pl-2 lg:pl-4 flex items-center gap-2" style={{ borderColor: 'var(--card-border)' }}>
+                  {/* Quick Search / Command Palette trigger */}
+                  <button
+                    onClick={onOpenPalette}
+                    title="Search & Commands (Ctrl + K)"
+                    className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono font-medium glass-card border border-cyan-500/25 text-theme-muted hover:text-cyan-400 hover:border-cyan-400/50 transition-all cursor-pointer shadow-sm group"
+                  >
+                    <Search size={13} className="text-cyan-400 group-hover:scale-110 transition-transform" />
+                    <span className="hidden xl:inline text-[10px] opacity-75 font-semibold">Ctrl+K</span>
+                  </button>
+
                   <ThemeController />
                   <CVButton />
                 </div>
@@ -98,7 +105,14 @@ export default function Header() {
             </div>
 
             {/* Mobile Navigation Toggle & Theme */}
-            <div className="flex md:hidden items-center gap-3">
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={onOpenPalette}
+                title="Search & Commands"
+                className="p-2 rounded-xl text-theme-muted hover:text-cyan-400 glass-card border border-cyan-500/25 cursor-pointer"
+              >
+                <Search size={16} className="text-cyan-400" />
+              </button>
               <ThemeController />
               <MobileMenuButton isOpen={mobileMenuOpen} setIsOpen={setMobileMenuOpen} />
             </div>
@@ -112,3 +126,4 @@ export default function Header() {
     </header>
   );
 }
+

@@ -1,1 +1,21 @@
-node_modules
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+dist-ssr/
+
+# Environment and local settings
+*.local
+.env
+.env.*
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+scratch/
+modal_demo.html
