@@ -498,12 +498,34 @@ export default function CyberNetworkHero({
 
       <div className="relative z-[1] mx-auto grid w-full max-w-5xl gap-10 py-28 md:grid-cols-2 md:items-center">
         <div>
-          <p
-            className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.25em]"
-            style={{ color: palette.muted }}
+          <div
+            className="mb-5 inline-flex items-center gap-3 px-4 py-2 rounded-xl backdrop-blur-md transition-all shadow-sm"
+            style={{
+              backgroundColor: theme === 'light' ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.05)',
+              border: `1.5px solid rgba(${palette.accentRgb}, 0.35)`,
+              boxShadow: `0 0 18px rgba(${palette.accentRgb}, 0.16)`,
+            }}
           >
-            {eyebrow}
-          </p>
+            <span className="relative flex h-3 w-3">
+              <span
+                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                style={{ backgroundColor: `rgb(${palette.accentRgb})` }}
+              ></span>
+              <span
+                className="relative inline-flex rounded-full h-3 w-3"
+                style={{ backgroundColor: `rgb(${palette.accentRgb})` }}
+              ></span>
+            </span>
+            <span
+              className="font-mono text-lg sm:text-xl md:text-2xl font-black uppercase tracking-[0.22em]"
+              style={{
+                color: theme === 'light' ? '#0369a1' : `rgb(${palette.accentRgb})`,
+                textShadow: theme === 'light' ? 'none' : `0 0 14px rgba(${palette.accentRgb}, 0.55)`,
+              }}
+            >
+              {eyebrow}
+            </span>
+          </div>
           <h1
             id="cyber-network-title"
             className="font-sans text-[clamp(2.2rem,5.2vw,3.65rem)] font-extrabold leading-[1.05] tracking-tight"
