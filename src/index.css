@@ -48,9 +48,9 @@ html[data-theme='morning'] {
   --bg-section: #E0F2FE;
   
   --text-heading: #0F172A;
-  --text-body: #334155;
-  --text-muted: #64748B;
-  --text-accent: #0369A1;
+  --text-body: #1E293B;
+  --text-muted: #334155;
+  --text-accent: #0284C7;
   
   --text-link: #0369A1;
   --text-link-hover: #075985;
@@ -75,9 +75,9 @@ html[data-theme='afternoon'] {
   --bg-section: #BAE6FD;
   
   --text-heading: #0F172A;
-  --text-body: #1E293B;
-  --text-muted: #475569;
-  --text-accent: #075985;
+  --text-body: #0F172A;
+  --text-muted: #1E293B;
+  --text-accent: #0369A1;
   
   --text-link: #075985;
   --text-link-hover: #0C4A6E;
@@ -223,16 +223,22 @@ html[data-theme='night'] {
 
 /* ─── Aggressive Tailwind Utility Overrides ────────────────────────────── */
 
-/* Force all standard body text utilities to use the semantic body color */
-.text-gray-100, .text-gray-200, .text-gray-300, 
-.text-slate-100, .text-slate-200, .text-slate-300, 
-.text-white {
+/* Force all standard body text utilities to use the semantic body color (excluding terminals and simulators) */
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-gray-100,
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-gray-200,
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-gray-300, 
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-slate-100,
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-slate-200,
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-slate-300, 
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-white {
   color: var(--text-heading) !important;
 }
 
-/* Force all muted text utilities to use the semantic muted color */
-.text-gray-400, .text-gray-500, 
-.text-slate-400, .text-slate-500 {
+/* Force all muted text utilities to use the semantic muted color (excluding terminals and simulators) */
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-gray-400,
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-gray-500, 
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-slate-400,
+:not(.cyber-terminal, .cyber-terminal *, .vapt-console, .vapt-console *).text-slate-500 {
   color: var(--text-muted) !important;
 }
 
@@ -266,7 +272,59 @@ header {
   background-color: transparent !important;
 }
 
-/* ─── Evening Specific Overrides ────────────── */
+/* ─── Section Header Badge & Subtitle Theme Enhancements ─── */
+.section-header-badge {
+  background-color: rgba(15, 23, 42, 0.75);
+  border-color: rgba(6, 182, 212, 0.4);
+  color: #38bdf8;
+}
+.section-header-badge .badge-icon {
+  color: #38bdf8;
+}
+.section-header-badge .badge-text {
+  color: #e0f2fe;
+}
+.section-header-subtitle {
+  color: var(--text-muted) !important;
+}
+
+/* Light / Morning Theme adjustments */
+html[data-theme='morning'] .section-header-badge,
+html[data-theme='afternoon'] .section-header-badge {
+  background-color: rgba(255, 255, 255, 0.90) !important;
+  border-color: rgba(2, 132, 199, 0.45) !important;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.12) !important;
+}
+html[data-theme='morning'] .section-header-badge .badge-icon,
+html[data-theme='afternoon'] .section-header-badge .badge-icon {
+  color: #0284c7 !important;
+}
+html[data-theme='morning'] .section-header-badge .badge-text,
+html[data-theme='afternoon'] .section-header-badge .badge-text {
+  color: #0369a1 !important;
+}
+
+html[data-theme='morning'] .section-header-subtitle,
+html[data-theme='afternoon'] .section-header-subtitle {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+
+/* Evening Theme adjustments */
+html[data-theme='evening'] .section-header-badge {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  border-color: rgba(251, 146, 60, 0.5) !important;
+}
+html[data-theme='evening'] .section-header-badge .badge-icon {
+  color: #fb923c !important;
+}
+html[data-theme='evening'] .section-header-badge .badge-text {
+  color: #ffedd5 !important;
+}
+html[data-theme='evening'] .section-header-subtitle {
+  color: #f1f5f9 !important;
+}
+
 html[data-theme='evening'] .text-cyan-400 {
   color: #fef08a !important; /* Luminous warm gold for high contrast against evening sunset */
 }

@@ -339,9 +339,6 @@ export default function Experience() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b pb-8" style={{ borderColor: 'var(--card-border)' }}>
           <div className="flex flex-col items-start">
-            <div className="mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-slate-900/85 dark:bg-black/75 border border-cyan-500/40 text-cyan-400 dark:text-cyan-300 backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
-              <span>CAREER TIMELINE</span>
-            </div>
             <motion.h2 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -350,7 +347,10 @@ export default function Experience() {
             >
               <span className="text-gradient">Career Journey</span>
             </motion.h2>
-            <div className="h-1 w-20 mt-3 mb-4 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500 shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
+            <div className="h-1 w-20 mt-3 mb-3.5 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500 shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase backdrop-blur-md shadow-md border section-header-badge mb-3">
+              <span className="badge-text">CAREER TIMELINE</span>
+            </div>
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}

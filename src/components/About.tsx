@@ -267,21 +267,22 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header Badges & Title */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Interactive 3D Profile Experience
-            </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 backdrop-blur-md font-mono">
-              Kinetic Tokens: <span className="text-emerald-400 font-bold">ACTIVE</span>
-            </span>
-          </div>
-
           <h2 className="text-4xl sm:text-5xl font-black mb-3 inline-block relative tracking-tight">
             <span className="text-gradient">About Me</span>
             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-cyan-500 rounded-full shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
           </h2>
-          <p className="text-base sm:text-lg text-theme-muted max-w-2xl mt-3">
+
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-4 section-header-badge-container">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md section-header-badge">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="badge-text">Interactive 3D Profile Experience</span>
+            </span>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md font-mono section-header-badge">
+              <span className="badge-text">Kinetic Tokens:</span> <span className="text-emerald-400 font-bold">ACTIVE</span>
+            </span>
+          </div>
+
+          <p className="text-base sm:text-lg section-header-subtitle max-w-2xl mt-4 font-medium">
             Bridging resilient cybersecurity infrastructure with modern, interactive web engineering.
           </p>
         </div>

@@ -225,7 +225,7 @@ export default function CyberSecurityFocus() {
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl relative"
+          className="vapt-console rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl relative bg-[#060a12] text-slate-100"
         >
           {/* Top Console Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-4 bg-slate-950/70 border-b border-cyan-500/20">
@@ -253,7 +253,7 @@ export default function CyberSecurityFocus() {
                   className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     scenario === key
                       ? 'bg-cyan-500 text-slate-950 shadow-sm'
-                      : 'text-slate-400 hover:text-white bg-white/5'
+                      : 'text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80'
                   }`}
                 >
                   {AUDIT_SCENARIOS[key].name}
@@ -264,9 +264,9 @@ export default function CyberSecurityFocus() {
 
           {/* Console Target & Trigger Row */}
           <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-3.5 bg-slate-900/40 border-b border-white/5">
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-100">
               <span className="text-cyan-400 font-bold">TARGET:</span>
-              <span className="px-2 py-0.5 rounded bg-slate-950 text-emerald-300 border border-emerald-500/30">
+              <span className="px-2 py-0.5 rounded bg-black text-emerald-300 border border-emerald-500/50 font-bold">
                 {currentScenario.target}
               </span>
             </div>
@@ -275,7 +275,7 @@ export default function CyberSecurityFocus() {
               {auditComplete ? (
                 <button
                   onClick={resetAudit}
-                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-200 hover:bg-slate-700 transition-all cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-100 hover:bg-slate-700 border border-slate-700 transition-all cursor-pointer"
                 >
                   <RotateCcw size={13} /> Reset Audit
                 </button>
@@ -304,12 +304,12 @@ export default function CyberSecurityFocus() {
           </div>
 
           {/* Log Streaming Window */}
-          <div className="p-6 font-mono text-xs space-y-3 min-h-[260px] bg-slate-950/90 text-slate-300">
+          <div className="p-6 font-mono text-xs space-y-3 min-h-[260px] bg-[#050811] text-slate-100">
             {activeLogIndex === -1 ? (
               <div className="flex flex-col items-center justify-center py-12 text-center text-slate-500">
                 <ShieldCheck size={36} className="text-cyan-500/40 mb-3" />
-                <p className="text-slate-400 font-semibold">Ready to test cybersecurity posture.</p>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="font-semibold text-sm" style={{ color: "#f1f5f9" }}>Ready to test cybersecurity posture.</p>
+                <p className="text-xs mt-1" style={{ color: "#94a3b8" }}>
                   Click <span className="text-cyan-400 font-bold">"Run Live VAPT Scan"</span> above to simulate an automated penetration testing cycle.
                 </p>
               </div>
@@ -321,12 +321,12 @@ export default function CyberSecurityFocus() {
                   animate={{ opacity: 1, x: 0 }}
                   className="flex items-start gap-3 py-1 border-b border-white/5 last:border-none"
                 >
-                  <span className="text-slate-500 select-none">{log.time}</span>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-cyan-950/60 text-cyan-400 border border-cyan-500/30">
+                  <span className="text-cyan-400 font-semibold select-none shrink-0" style={{ color: "#22d3ee" }}>{log.time}</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider shrink-0" style={{ color: "#a5f3fc", backgroundColor: "#083344", border: "1px solid #06b6d4" }}>
                     {log.stage}
                   </span>
-                  <span className="flex-1 text-slate-200">{log.detail}</span>
-                  <span className="inline-flex items-center gap-1 text-emerald-400 font-semibold text-[11px]">
+                  <span className="flex-1 font-medium leading-relaxed" style={{ color: "#f8fafc" }}>{log.detail}</span>
+                  <span className="inline-flex items-center gap-1 font-bold text-[11px] shrink-0" style={{ color: "#34d399" }}>
                     <CheckCircle2 size={13} /> PASS
                   </span>
                 </motion.div>

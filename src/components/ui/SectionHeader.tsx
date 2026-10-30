@@ -24,15 +24,7 @@ export default function SectionHeader({
       transition={{ duration: 0.5 }}
       className={`w-full max-w-4xl mx-auto flex flex-col items-center text-center mb-14 sm:mb-16 px-4 ${className}`}
     >
-      {/* 1. Stacked Eyebrow Badge */}
-      {badge && (
-        <div className="mb-3.5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-slate-900/85 dark:bg-black/75 border border-cyan-500/40 text-cyan-400 dark:text-cyan-300 backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.35)] transition-all">
-          {BadgeIcon && <BadgeIcon size={14} className="shrink-0 text-cyan-400" />}
-          <span>{badge}</span>
-        </div>
-      )}
-
-      {/* 2. Main Title with Underline */}
+      {/* 1. Main Heading (Upar) */}
       <div className="flex flex-col items-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight transition-colors">
           <span className="text-gradient drop-shadow-sm">{title}</span>
@@ -41,9 +33,17 @@ export default function SectionHeader({
         <div className="h-1 w-16 sm:w-20 mt-3 rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500 shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
       </div>
 
-      {/* 3. Subtitle / Description */}
+      {/* 2. Badge (Heading ke Niche) */}
+      {badge && (
+        <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase backdrop-blur-md shadow-md border transition-all section-header-badge">
+          {BadgeIcon && <BadgeIcon size={14} className="shrink-0 badge-icon" />}
+          <span className="badge-text">{badge}</span>
+        </div>
+      )}
+
+      {/* 3. Subtitle / Description (Sabse Niche) */}
       {subtitle && (
-        <p className="mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-theme-muted font-normal">
+        <p className="mt-4 max-w-2xl text-sm sm:text-base leading-relaxed section-header-subtitle font-medium">
           {subtitle}
         </p>
       )}
