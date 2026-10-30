@@ -92,7 +92,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         {/* Icon Floating */}
         <motion.div 
           style={{ transform: isHovering ? "translateZ(30px)" : "translateZ(0px)" }}
-          className="absolute top-4 right-4 z-20 bg-[#05070a]/80 backdrop-blur-md p-2 rounded-full border border-white/10 group-hover:border-cyan-500/50 transition-all duration-300 shadow-lg"
+          className="absolute top-4 right-4 z-20 bg-[var(--card-bg)] backdrop-blur-md p-2 rounded-full border border-white/10 group-hover:border-cyan-500/50 transition-all duration-300 shadow-lg"
         >
           <Icon className="text-cyan-400" size={18} />
         </motion.div>

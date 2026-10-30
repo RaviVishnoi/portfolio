@@ -22,7 +22,7 @@ const educationData = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 relative overflow-hidden">
+    <section id="education" className="py-24 relative overflow-hidden" style={{ background: "var(--bg)" }}>
       <div className="max-w-4xl mx-auto px-6">
         <SectionHeader
           badge="ACADEMIC FOUNDATION"
@@ -46,7 +46,7 @@ export default function Education() {
                 className={`relative flex flex-col md:flex-row items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-[-21px] md:left-1/2 md:-translate-x-1/2 bg-[#080b12] p-1 rounded-full border border-cyan-500 z-10">
+                <div className="absolute left-[-21px] md:left-1/2 md:-translate-x-1/2 bg-[var(--bg)] p-1 rounded-full border border-cyan-500 z-10">
                   <div className="bg-cyan-500 w-3 h-3 rounded-full"></div>
                 </div>
 

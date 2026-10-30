@@ -96,7 +96,7 @@ export default function Certifications() {
   };
 
   return (
-    <section id="certifications" className="py-24 relative bg-[#05070a]">
+    <section id="certifications" className="py-24 relative" style={{ background: "var(--bg-section)" }}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           badge="VERIFIED CREDENTIALS & ACCREDITATIONS"
@@ -183,7 +183,7 @@ export default function Certifications() {
               exit={{ scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-[#0c1017]/95 border border-cyan-500/20 rounded-3xl shadow-2xl shadow-cyan-950/40"
+              className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto border border-cyan-500/30 rounded-3xl shadow-2xl shadow-cyan-950/40"
               style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.2) transparent' }}
             >
               <button
