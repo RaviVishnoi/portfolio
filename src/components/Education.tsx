@@ -46,29 +46,29 @@ export default function Education() {
                 className={`relative flex flex-col md:flex-row items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-[-21px] md:left-1/2 md:-translate-x-1/2 bg-[var(--bg)] p-1 rounded-full border border-cyan-500 z-10">
-                  <div className="bg-cyan-500 w-3 h-3 rounded-full"></div>
+                <div className="absolute left-[-11px] md:left-1/2 md:-translate-x-1/2 bg-[var(--bg)] p-1 rounded-full border border-cyan-500 z-10 shadow-[0_0_10px_rgba(6,182,212,0.6)]">
+                  <div className="bg-cyan-500 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full"></div>
                 </div>
 
                 {/* Content Card */}
-                <div className={`pl-8 md:pl-0 w-full md:w-1/2 ${idx % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                  <div className="glass-card p-6 rounded-2xl hover:border-cyan-500/30 group">
-                    <div className="flex items-center gap-3 mb-2 justify-start md:justify-normal" style={{ justifyContent: idx % 2 === 0 ? 'flex-end' : 'flex-start' }}>
+                <div className={`pl-6 sm:pl-8 md:pl-0 w-full md:w-1/2 ${idx % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
+                  <div className="glass-card p-4 sm:p-6 rounded-2xl hover:border-cyan-500/30 group">
+                    <div className="flex items-center gap-2.5 sm:gap-3 mb-2 justify-start md:justify-normal" style={{ justifyContent: idx % 2 === 0 ? 'flex-end' : 'flex-start' }}>
                       {idx % 2 !== 0 && <GraduationCap className="text-cyan-500 hidden md:block" size={24} />}
-                      <span className="text-cyan-400 font-semibold tracking-wider text-sm">{edu.period}</span>
+                      <span className="text-cyan-400 font-semibold tracking-wider text-xs sm:text-sm">{edu.period}</span>
                       {idx % 2 === 0 && <GraduationCap className="text-cyan-500 hidden md:block" size={24} />}
-                      <GraduationCap className="text-cyan-500 md:hidden" size={24} />
+                      <GraduationCap className="text-cyan-500 md:hidden" size={20} />
                     </div>
                     
-                    <h3 className="text-xl font-bold text-gray-100 group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold group-hover:text-cyan-400 transition-colors" style={{ color: 'var(--text-heading)' }}>
                       {edu.degree}
                     </h3>
                     {edu.specialization && (
-                      <p className="text-cyan-500/80 text-sm mb-2">{edu.specialization}</p>
+                      <p className="text-cyan-400 font-semibold text-xs sm:text-sm mb-2">{edu.specialization}</p>
                     )}
                     
-                    <p className="text-gray-300 font-medium mb-4">{edu.institution}</p>
-                    <p className="text-gray-400 text-sm leading-relaxed">{edu.details}</p>
+                    <p className="font-semibold text-sm sm:text-base mb-3" style={{ color: 'var(--text-body)' }}>{edu.institution}</p>
+                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{edu.details}</p>
                   </div>
                 </div>
               </motion.div>

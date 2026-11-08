@@ -70,7 +70,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="w-full lg:w-7/12"
           >
-            <form onSubmit={handleSubmit} className="glass-card p-8 rounded-2xl flex flex-col gap-6 relative" style={{ border: '1px solid var(--card-border)' }}>
+            <form onSubmit={handleSubmit} className="glass-card p-5 sm:p-8 rounded-2xl flex flex-col gap-5 sm:gap-6 relative" style={{ border: '1px solid var(--card-border)' }}>
               
               {formStatus === 'success' && (
                 <motion.div 

@@ -228,20 +228,20 @@ export default function CyberSecurityFocus() {
           className="vapt-console rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl relative bg-[#060a12] text-slate-100"
         >
           {/* Top Console Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-4 bg-slate-950/70 border-b border-cyan-500/20">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-3.5 bg-slate-950/70 border-b border-cyan-500/20">
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80 inline-block" />
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/80 inline-block" />
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500/80 inline-block" />
               </div>
-              <span className="font-mono text-xs font-bold text-cyan-400 flex items-center gap-2 ml-2">
+              <span className="font-mono text-[11px] sm:text-xs font-bold text-cyan-400 flex items-center gap-2 ml-1 sm:ml-2">
                 <Terminal size={14} /> LIVE VAPT AUDIT SIMULATOR
               </span>
             </div>
 
-            {/* Scenario Tabs */}
-            <div className="flex items-center gap-2">
+            {/* Scenario Tabs — horizontally scrollable without clipping on mobile */}
+            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto max-w-full pb-0.5 scrollbar-none w-full sm:w-auto">
               {(['webapp', 'network', 'cloud'] as AuditScenario[]).map((key) => (
                 <button
                   key={key}
@@ -250,9 +250,9 @@ export default function CyberSecurityFocus() {
                     setScenario(key);
                     resetAudit();
                   }}
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  className={`px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-semibold transition-all cursor-pointer shrink-0 whitespace-nowrap ${
                     scenario === key
-                      ? 'bg-cyan-500 text-slate-950 shadow-sm'
+                      ? 'bg-cyan-500 text-slate-950 shadow-sm font-bold'
                       : 'text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80'
                   }`}
                 >
@@ -263,19 +263,19 @@ export default function CyberSecurityFocus() {
           </div>
 
           {/* Console Target & Trigger Row */}
-          <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-3.5 bg-slate-900/40 border-b border-white/5">
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-100">
-              <span className="text-cyan-400 font-bold">TARGET:</span>
-              <span className="px-2 py-0.5 rounded bg-black text-emerald-300 border border-emerald-500/50 font-bold">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-3 bg-slate-900/40 border-b border-white/5">
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-100 max-w-full">
+              <span className="text-cyan-400 font-bold shrink-0">TARGET:</span>
+              <span className="px-2 py-0.5 rounded bg-black text-emerald-300 border border-emerald-500/50 font-bold truncate max-w-[220px] sm:max-w-xs md:max-w-none">
                 {currentScenario.target}
               </span>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
               {auditComplete ? (
                 <button
                   onClick={resetAudit}
-                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-100 hover:bg-slate-700 border border-slate-700 transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-100 hover:bg-slate-700 border border-slate-700 transition-all cursor-pointer w-full sm:w-auto"
                 >
                   <RotateCcw size={13} /> Reset Audit
                 </button>
@@ -283,7 +283,7 @@ export default function CyberSecurityFocus() {
                 <button
                   onClick={runAudit}
                   disabled={isAuditing}
-                  className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  className={`inline-flex items-center justify-center gap-2 px-5 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer w-full sm:w-auto ${
                     isAuditing
                       ? 'bg-cyan-500/40 text-cyan-200 cursor-wait'
                       : 'bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-[0_0_12px_rgba(6,182,212,0.4)] hover:shadow-[0_0_20px_rgba(6,182,212,0.6)]'
@@ -304,9 +304,9 @@ export default function CyberSecurityFocus() {
           </div>
 
           {/* Log Streaming Window */}
-          <div className="p-6 font-mono text-xs space-y-3 min-h-[260px] bg-[#050811] text-slate-100">
+          <div className="p-4 sm:p-6 font-mono text-xs space-y-2.5 sm:space-y-3 min-h-[240px] sm:min-h-[260px] bg-[#050811] text-slate-100">
             {activeLogIndex === -1 ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center text-slate-500">
+              <div className="flex flex-col items-center justify-center py-10 sm:py-12 text-center text-slate-500">
                 <ShieldCheck size={36} className="text-cyan-500/40 mb-3" />
                 <p className="font-semibold text-sm" style={{ color: "#f1f5f9" }}>Ready to test cybersecurity posture.</p>
                 <p className="text-xs mt-1" style={{ color: "#94a3b8" }}>
@@ -319,14 +319,14 @@ export default function CyberSecurityFocus() {
                   key={idx}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="flex items-start gap-3 py-1 border-b border-white/5 last:border-none"
+                  className="flex flex-wrap sm:flex-nowrap items-start gap-2 sm:gap-3 py-1.5 border-b border-white/5 last:border-none"
                 >
                   <span className="text-cyan-400 font-semibold select-none shrink-0" style={{ color: "#22d3ee" }}>{log.time}</span>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider shrink-0" style={{ color: "#a5f3fc", backgroundColor: "#083344", border: "1px solid #06b6d4" }}>
                     {log.stage}
                   </span>
-                  <span className="flex-1 font-medium leading-relaxed" style={{ color: "#f8fafc" }}>{log.detail}</span>
-                  <span className="inline-flex items-center gap-1 font-bold text-[11px] shrink-0" style={{ color: "#34d399" }}>
+                  <span className="flex-1 font-medium leading-relaxed min-w-[200px]" style={{ color: "#f8fafc" }}>{log.detail}</span>
+                  <span className="inline-flex items-center gap-1 font-bold text-[11px] shrink-0 ml-auto sm:ml-0" style={{ color: "#34d399" }}>
                     <CheckCircle2 size={13} /> PASS
                   </span>
                 </motion.div>
@@ -338,10 +338,10 @@ export default function CyberSecurityFocus() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="mt-4 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 flex flex-wrap items-center justify-between gap-4"
+                className="mt-4 p-3.5 sm:p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                  <div className="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">
                     A+
                   </div>
                   <div>

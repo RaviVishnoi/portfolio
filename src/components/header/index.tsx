@@ -82,8 +82,8 @@ export default function Header({ onOpenPalette }: HeaderProps) {
           <div className="relative z-10 flex items-center w-full justify-between">
             <Logo />
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1 lg:gap-3 h-full ml-auto">
+            {/* Desktop Navigation (Laptop & Desktop screens >= 1200px) */}
+            <div className="hidden xl:flex items-center gap-1 lg:gap-3 h-full ml-auto">
               <DesktopNavigation activeSection={activeSection} />
               <div className="flex items-center gap-2 lg:gap-4 ml-1">
                 <SocialLinks />
@@ -104,8 +104,8 @@ export default function Header({ onOpenPalette }: HeaderProps) {
               </div>
             </div>
 
-            {/* Mobile Navigation Toggle & Theme */}
-            <div className="flex md:hidden items-center gap-2">
+            {/* Mobile & Tablet Navigation Toggle & Theme (< 1200px) */}
+            <div className="flex xl:hidden items-center gap-2">
               <button
                 onClick={onOpenPalette}
                 title="Search & Commands"

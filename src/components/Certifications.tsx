@@ -183,21 +183,21 @@ export default function Certifications() {
               exit={{ scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto border border-cyan-500/30 rounded-3xl shadow-2xl shadow-cyan-950/40"
+              className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto border border-cyan-500/30 rounded-3xl shadow-2xl shadow-cyan-950/40 bg-[#0a0f1d] backdrop-blur-2xl"
               style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.2) transparent' }}
             >
               <button
                 onClick={() => setSelectedCertIndex(null)}
-                className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] flex items-center justify-center w-10 h-10 bg-black/50 border border-white/10 rounded-full text-white hover:bg-white/10 hover:text-cyan-400 transition-all backdrop-blur-md"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-black/60 border border-white/15 rounded-full text-white hover:bg-white/10 hover:text-cyan-400 transition-all backdrop-blur-md cursor-pointer"
                 aria-label="Close modal"
               >
-                <X size={20} />
+                <X size={18} className="sm:w-5 sm:h-5" />
               </button>
 
-              <div className="p-6 sm:p-8 md:p-10 border-b border-white/10">
+              <div className="p-5 sm:p-8 md:p-10 border-b border-white/10">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pr-10">
                   <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
                       {certs[activeSlideIndex]?.name || 'My Certifications'}
                     </h2>
                     <div className="flex gap-2 sm:gap-3 flex-wrap items-center">
@@ -220,7 +220,7 @@ export default function Certifications() {
                       href={certs[activeSlideIndex]?.verifyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-xl shadow-lg shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5 shrink-0 self-start sm:self-center"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-xl shadow-lg shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5 shrink-0 self-start sm:self-center"
                     >
                       <span>Verify Credential</span>
                       <ExternalLink size={14} />
@@ -229,7 +229,7 @@ export default function Certifications() {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 md:p-10">
+              <div className="p-4 sm:p-8 md:p-10">
                 <div className="w-full rounded-2xl overflow-hidden shadow-2xl relative mb-8 group bg-black/60 border border-white/10">
                   <Swiper
                     modules={[Navigation, Pagination, EffectFade, Keyboard]}

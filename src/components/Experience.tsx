@@ -123,7 +123,7 @@ const ExperienceCard = ({ exp, isVisible }: { exp: typeof experienceData[0], isV
   };
 
   return (
-    <div className="relative z-10 w-full mb-20 last:mb-0 pl-12 md:pl-24" id={`exp-${exp.id}`}>
+    <div className="relative z-10 w-full mb-12 sm:mb-16 md:mb-20 last:mb-0 pl-8 sm:pl-14 md:pl-24" id={`exp-${exp.id}`}>
       
       {/* Animated Timeline Node */}
       <div className="absolute left-0 top-8 md:top-12 -translate-x-1/2 flex items-center justify-center">
@@ -152,7 +152,7 @@ const ExperienceCard = ({ exp, isVisible }: { exp: typeof experienceData[0], isV
           transformStyle: "preserve-3d",
           borderColor: isHovering ? 'var(--accent)' : 'var(--card-border)'
         }}
-        className="glass-card rounded-2xl p-6 md:p-8 relative overflow-hidden transition-colors duration-500"
+        className="glass-card rounded-2xl p-4 sm:p-6 md:p-8 relative overflow-hidden transition-colors duration-500"
       >
         {/* Dynamic Mouse Follow Glow */}
         <motion.div 
@@ -173,13 +173,13 @@ const ExperienceCard = ({ exp, isVisible }: { exp: typeof experienceData[0], isV
         <div className="relative z-10" style={{ transformStyle: "preserve-3d" }}>
           
           {/* Header Row */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="flex items-center gap-3 sm:gap-4">
               <motion.div 
                 style={{ transform: isHovering ? "translateZ(40px)" : "translateZ(0px)" }}
-                className="w-14 h-14 rounded-xl flex items-center justify-center bg-cyan-500/10 text-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-transform duration-300"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center bg-cyan-500/10 text-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-transform duration-300 shrink-0"
               >
-                <Icon size={28} />
+                <Icon size={24} className="sm:w-7 sm:h-7" />
               </motion.div>
               <div>
                 <motion.h3 
@@ -187,12 +187,12 @@ const ExperienceCard = ({ exp, isVisible }: { exp: typeof experienceData[0], isV
                     transform: isHovering ? "translateZ(30px)" : "translateZ(0px)",
                     color: 'var(--text)' 
                   }}
-                  className="text-2xl font-bold transition-transform duration-300"
+                  className="text-lg sm:text-2xl font-bold transition-transform duration-300"
                 >
                   {exp.role}
                 </motion.h3>
-                <div className="flex items-center gap-2 mt-1 text-theme-muted font-medium">
-                  <Building2 size={16} />
+                <div className="flex items-center gap-1.5 sm:gap-2 mt-0.5 sm:mt-1 text-theme-muted font-medium text-xs sm:text-sm">
+                  <Building2 size={15} />
                   <span>{exp.company}</span>
                 </div>
               </div>
@@ -200,14 +200,14 @@ const ExperienceCard = ({ exp, isVisible }: { exp: typeof experienceData[0], isV
 
             <motion.div 
               style={{ transform: isHovering ? "translateZ(20px)" : "translateZ(0px)" }}
-              className="flex flex-col items-start md:items-end gap-1 transition-transform duration-300"
+              className="flex flex-row sm:flex-col items-center sm:items-end gap-2 sm:gap-1 transition-transform duration-300 w-full sm:w-auto justify-between sm:justify-start"
             >
-              <div className="flex items-center gap-2 text-cyan-500 font-semibold bg-cyan-500/10 px-3 py-1 rounded-full text-sm shadow-[0_0_10px_rgba(6,182,212,0.1)]">
-                <Calendar size={14} />
+              <div className="flex items-center gap-1.5 text-cyan-500 font-semibold bg-cyan-500/10 px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm shadow-[0_0_10px_rgba(6,182,212,0.1)]">
+                <Calendar size={13} />
                 {exp.period}
               </div>
-              <div className="flex items-center gap-1 text-sm text-theme-muted mt-1">
-                <MapPin size={14} />
+              <div className="flex items-center gap-1 text-xs sm:text-sm text-theme-muted">
+                <MapPin size={13} />
                 {exp.location}
               </div>
             </motion.div>

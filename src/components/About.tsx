@@ -296,7 +296,7 @@ export default function About() {
               ref={cardRef}
               onMouseMove={handleCardMouseMove}
               onMouseLeave={handleCardMouseLeave}
-              className="relative w-full max-w-[360px] sm:max-w-[420px] md:max-w-[460px] aspect-square flex items-center justify-center cursor-pointer"
+              className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[380px] md:max-w-[440px] aspect-square flex items-center justify-center cursor-pointer"
               style={{ perspective: 1200 }}
             >
               {/* Main 3D Tilted Card Body */}
@@ -510,14 +510,14 @@ export default function About() {
 
             {/* Interactive Domain Tabs */}
             <div>
-              <div className="flex gap-4 mb-6 border-b pb-2" style={{ borderColor: 'var(--card-border)' }}>
+              <div className="flex items-center gap-2 sm:gap-4 mb-6 border-b pb-2 overflow-x-auto scrollbar-none whitespace-nowrap" style={{ borderColor: 'var(--card-border)' }}>
                 <button
                   onClick={() => handleTabChange('security')}
-                  className={`pb-2 px-2 text-base sm:text-lg font-medium transition-colors relative cursor-pointer ${
+                  className={`pb-2 px-2 text-sm sm:text-base md:text-lg font-medium transition-colors relative cursor-pointer shrink-0 ${
                     activeTab === 'security' ? 'text-cyan-400' : 'text-theme-muted hover:text-cyan-300'
                   }`}
                 >
-                  <ShieldCheck className="inline mr-2" size={19} />
+                  <ShieldCheck className="inline mr-1.5 sm:mr-2" size={18} />
                   Security Defense
                   {activeTab === 'security' && (
                     <motion.div
@@ -528,11 +528,11 @@ export default function About() {
                 </button>
                 <button
                   onClick={() => handleTabChange('development')}
-                  className={`pb-2 px-2 text-base sm:text-lg font-medium transition-colors relative cursor-pointer ${
+                  className={`pb-2 px-2 text-sm sm:text-base md:text-lg font-medium transition-colors relative cursor-pointer shrink-0 ${
                     activeTab === 'development' ? 'text-cyan-400' : 'text-theme-muted hover:text-cyan-300'
                   }`}
                 >
-                  <Code className="inline mr-2" size={19} />
+                  <Code className="inline mr-1.5 sm:mr-2" size={18} />
                   Web Development
                   {activeTab === 'development' && (
                     <motion.div
@@ -543,11 +543,11 @@ export default function About() {
                 </button>
                 <button
                   onClick={() => handleTabChange('motion')}
-                  className={`pb-2 px-2 text-base sm:text-lg font-medium transition-colors relative cursor-pointer ${
+                  className={`pb-2 px-2 text-sm sm:text-base md:text-lg font-medium transition-colors relative cursor-pointer shrink-0 ${
                     activeTab === 'motion' ? 'text-cyan-400' : 'text-theme-muted hover:text-cyan-300'
                   }`}
                 >
-                  <Film className="inline mr-2" size={19} />
+                  <Film className="inline mr-1.5 sm:mr-2" size={18} />
                   Motion Graphics
                   {activeTab === 'motion' && (
                     <motion.div
@@ -624,7 +624,7 @@ export default function About() {
             </div>
 
             {/* Action CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full">
               <a
                 href={`${import.meta.env.BASE_URL}Ravi_Vishnoi_CV.pdf`}
                 onClick={(e) => {
@@ -638,7 +638,7 @@ export default function About() {
                   link.click();
                   document.body.removeChild(link);
                 }}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-all group shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-all group shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] cursor-pointer text-sm sm:text-base"
               >
                 <Download size={18} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
                 Download CV
@@ -646,7 +646,7 @@ export default function About() {
 
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-950/40 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-950/40 transition-all cursor-pointer"
               >
                 View Projects <ExternalLink size={15} />
               </a>

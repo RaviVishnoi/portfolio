@@ -479,7 +479,7 @@ export default function CyberNetworkHero({
       id="home"
       aria-labelledby="cyber-network-title"
       className={cn(
-        'cyber-network-hero relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden px-6',
+        'cyber-network-hero relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden px-4 sm:px-6',
         className
       )}
       style={{ background: palette.bg, ...style }}
@@ -496,28 +496,28 @@ export default function CyberNetworkHero({
         }}
       />
 
-      <div className="relative z-[1] mx-auto grid w-full max-w-5xl gap-10 py-28 md:grid-cols-2 md:items-center">
+      <div className="relative z-[1] mx-auto grid w-full max-w-5xl gap-8 sm:gap-10 py-20 sm:py-24 md:py-28 md:grid-cols-2 md:items-center">
         <div>
           <div
-            className="mb-5 inline-flex items-center gap-3 px-4 py-2 rounded-xl backdrop-blur-md transition-all shadow-sm"
+            className="mb-4 sm:mb-5 inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl backdrop-blur-md transition-all shadow-sm"
             style={{
               backgroundColor: theme === 'light' ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.05)',
               border: `1.5px solid rgba(${palette.accentRgb}, 0.35)`,
               boxShadow: `0 0 18px rgba(${palette.accentRgb}, 0.16)`,
             }}
           >
-            <span className="relative flex h-3 w-3">
+            <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
               <span
                 className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
                 style={{ backgroundColor: `rgb(${palette.accentRgb})` }}
               ></span>
               <span
-                className="relative inline-flex rounded-full h-3 w-3"
+                className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3"
                 style={{ backgroundColor: `rgb(${palette.accentRgb})` }}
               ></span>
             </span>
             <span
-              className="font-mono text-lg sm:text-xl md:text-2xl font-black uppercase tracking-[0.22em]"
+              className="font-mono text-base sm:text-xl md:text-2xl font-black uppercase tracking-[0.20em] sm:tracking-[0.22em]"
               style={{
                 color: theme === 'light' ? '#0369a1' : `rgb(${palette.accentRgb})`,
                 textShadow: theme === 'light' ? 'none' : `0 0 14px rgba(${palette.accentRgb}, 0.55)`,
@@ -528,30 +528,26 @@ export default function CyberNetworkHero({
           </div>
           <h1
             id="cyber-network-title"
-            className="font-sans text-[clamp(2.2rem,5.2vw,3.65rem)] font-extrabold leading-[1.05] tracking-tight"
+            className="font-sans text-[clamp(1.85rem,5.2vw,3.65rem)] font-extrabold leading-[1.08] sm:leading-[1.05] tracking-tight"
             style={{ color: palette.text }}
           >
             {title}
           </h1>
           <p
-            className="mt-4 max-w-md font-sans text-base leading-relaxed md:text-lg"
+            className="mt-3 sm:mt-4 max-w-md font-sans text-sm sm:text-base leading-relaxed md:text-lg"
             style={{ color: palette.muted }}
           >
             {subtitle}
           </p>
 
-          {/* Buttons — inline styles ensure they render correctly even if Tailwind purge misses them */}
+          {/* Buttons — responsive wrap */}
           <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '16px',
-              marginTop: '32px',
-            }}
+            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8 w-full sm:w-auto"
           >
             <a
               href={primaryCta.href}
               style={primaryButtonStyle}
+              className="w-full sm:w-auto justify-center text-center"
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
@@ -572,6 +568,7 @@ export default function CyberNetworkHero({
               <a
                 href={secondaryCta.href}
                 style={secondaryButtonStyle}
+                className="w-full sm:w-auto justify-center text-center"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
                   e.currentTarget.style.background = `rgba(${palette.accentRgb},0.16)`;
@@ -595,7 +592,7 @@ export default function CyberNetworkHero({
         </div>
 
         <div
-          className="w-full rounded-xl border backdrop-blur-sm overflow-hidden"
+          className="cyber-terminal w-full rounded-xl border backdrop-blur-sm overflow-hidden shadow-2xl"
           style={{
             borderColor: palette.terminalBorder,
             background: palette.terminalBg,
@@ -605,7 +602,7 @@ export default function CyberNetworkHero({
         >
           {/* Title bar */}
           <div
-            className="flex items-center gap-2 px-4 py-3 border-b"
+            className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 border-b"
             style={{
               borderColor: palette.terminalBorder,
               background: theme === 'light' ? 'rgba(226,232,240,0.6)' : 'rgba(0,0,0,0.25)',
@@ -615,14 +612,14 @@ export default function CyberNetworkHero({
             <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
             <span
-              className="ml-2 font-mono text-xs font-semibold"
+              className="ml-2 font-mono text-[11px] sm:text-xs font-semibold truncate"
               style={{ color: palette.muted }}
             >
               secure-shell — ravi@portfolio:~
             </span>
           </div>
           {/* Terminal content */}
-          <div className="min-h-[260px] px-5 py-5 font-mono text-xs md:text-sm relative flex flex-col">
+          <div className="min-h-[240px] sm:min-h-[260px] px-3.5 sm:px-5 py-4 sm:py-5 font-mono text-xs sm:text-sm relative flex flex-col">
             {terminalMode === 'typing' && (
               <>
                 <div className="flex-grow">

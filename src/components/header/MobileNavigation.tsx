@@ -38,7 +38,7 @@ export default function MobileNavigation({ isOpen, setIsOpen, activeSection }: M
           animate={{ opacity: 1, y: 0, scaleY: 1 }}
           exit={{ opacity: 0, y: -20, scaleY: 0.95 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="md:hidden absolute top-full left-0 w-full overflow-hidden origin-top shadow-[0_20px_40px_rgba(0,0,0,0.5)] border-b rounded-b-2xl"
+          className="xl:hidden absolute top-full left-0 w-full max-h-[85vh] overflow-y-auto origin-top shadow-[0_20px_40px_rgba(0,0,0,0.5)] border-b rounded-b-2xl"
           style={{ 
             background: 'var(--card-bg)', 
             backdropFilter: 'blur(16px)',
@@ -46,7 +46,7 @@ export default function MobileNavigation({ isOpen, setIsOpen, activeSection }: M
           }}
           id="mobile-navigation"
         >
-          <div className="px-6 py-8 flex flex-col gap-6">
+          <div className="px-5 sm:px-6 py-6 sm:py-8 flex flex-col gap-5 sm:gap-6">
             
             {/* Links */}
             <ul className="flex flex-col gap-2">

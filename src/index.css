@@ -152,11 +152,15 @@ html[data-theme='night'] {
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
   
   body {
     background-color: var(--bg);
     color: var(--text-body);
+    overflow-x: hidden;
+    max-width: 100vw;
     transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out, border-color 1.5s ease-in-out;
   }
 
@@ -274,15 +278,16 @@ header {
 
 /* ─── Section Header Badge & Subtitle Theme Enhancements ─── */
 .section-header-badge {
-  background-color: rgba(15, 23, 42, 0.75);
-  border-color: rgba(6, 182, 212, 0.4);
+  background-color: rgba(15, 23, 42, 0.85);
+  border-color: rgba(56, 189, 248, 0.45);
   color: #38bdf8;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 .section-header-badge .badge-icon {
-  color: #38bdf8;
+  color: #38bdf8 !important;
 }
 .section-header-badge .badge-text {
-  color: #e0f2fe;
+  color: #f0f9ff !important;
 }
 .section-header-subtitle {
   color: var(--text-muted) !important;
@@ -291,9 +296,9 @@ header {
 /* Light / Morning Theme adjustments */
 html[data-theme='morning'] .section-header-badge,
 html[data-theme='afternoon'] .section-header-badge {
-  background-color: rgba(255, 255, 255, 0.90) !important;
-  border-color: rgba(2, 132, 199, 0.45) !important;
-  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.12) !important;
+  background-color: #ffffff !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.16) !important;
 }
 html[data-theme='morning'] .section-header-badge .badge-icon,
 html[data-theme='afternoon'] .section-header-badge .badge-icon {
@@ -312,14 +317,15 @@ html[data-theme='afternoon'] .section-header-subtitle {
 
 /* Evening Theme adjustments */
 html[data-theme='evening'] .section-header-badge {
-  background-color: rgba(15, 23, 42, 0.85) !important;
-  border-color: rgba(251, 146, 60, 0.5) !important;
+  background-color: rgba(15, 23, 42, 0.90) !important;
+  border-color: #f97316 !important;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25) !important;
 }
 html[data-theme='evening'] .section-header-badge .badge-icon {
   color: #fb923c !important;
 }
 html[data-theme='evening'] .section-header-badge .badge-text {
-  color: #ffedd5 !important;
+  color: #ffffff !important;
 }
 html[data-theme='evening'] .section-header-subtitle {
   color: #f1f5f9 !important;
