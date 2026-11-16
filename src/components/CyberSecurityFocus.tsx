@@ -1,6 +1,7 @@
 import SectionHeader from './ui/SectionHeader';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldScene3D } from './3d/ShieldScene3D';
 import {
   ShieldAlert,
   Network,
@@ -219,6 +220,37 @@ export default function CyberSecurityFocus() {
             );
           })}
         </div>
+
+        {/* 3D Cyber Defense Perimeter Telemetry Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="glass-card mb-10 p-5 sm:p-7 rounded-2xl border border-cyan-500/25 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div className="flex-1 max-w-lg">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 mb-3">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>3D DEFENSIVE PERIMETER TELEMETRY</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">
+              Hardened Perimeter Shield
+            </h3>
+            <p className="text-sm text-theme-muted leading-relaxed">
+              Real-time WebGL defense shield simulator. Interactive orbital rings reflect live firewall status, active access controls, and TLS 1.3 cryptographic integrity.
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-xs font-mono text-cyan-300">
+              <span className="px-2.5 py-1 rounded bg-black/40 border border-cyan-500/20">
+                STATUS: {isAuditing ? 'AUDITING...' : (auditComplete ? 'SECURED (A+)' : 'ARMED & MONITORING')}
+              </span>
+              <span className="text-slate-400">&gt; CLICK SHIELD TO PULSE</span>
+            </div>
+          </div>
+
+          <div className="w-full md:w-[320px] h-[220px] sm:h-[240px] flex items-center justify-center relative">
+            <ShieldScene3D status={isAuditing ? 'scanning' : 'secure'} className="!h-[220px]" />
+          </div>
+        </motion.div>
 
         {/* Live VAPT Security Audit Simulator Console */}
         <motion.div

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { cn } from '../../lib/utils';
 import { Question, getRandomQuestionSet } from '../../data/questions';
+import { HeroScene3D } from '../3d/HeroScene3D';
 
 export type CyberTheme = 'matrix' | 'azure' | 'crimson' | 'light';
 
@@ -117,6 +118,9 @@ export default function CyberNetworkHero({
   const [lineIndex, setLineIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
   const palette = PALETTES[theme];
+
+  // View Mode: 3D Quantum Core vs Interactive Terminal Shell
+  const [heroView, setHeroView] = useState<'3d' | 'shell'>('3d');
 
   // Game State
   type TerminalMode = 'typing' | 'playing' | 'set_complete';
@@ -600,26 +604,69 @@ export default function CyberNetworkHero({
             transition: 'background 0.4s ease, border-color 0.4s ease',
           }}
         >
-          {/* Title bar */}
+          {/* Title bar with View Switcher: [❖ 3D Core] vs [>_ Shell] */}
           <div
-            className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 border-b"
+            className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-2.5 border-b"
             style={{
               borderColor: palette.terminalBorder,
-              background: theme === 'light' ? 'rgba(226,232,240,0.6)' : 'rgba(0,0,0,0.25)',
+              background: theme === 'light' ? 'rgba(226,232,240,0.6)' : 'rgba(0,0,0,0.3)',
             }}
           >
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-            <span
-              className="ml-2 font-mono text-[11px] sm:text-xs font-semibold truncate"
-              style={{ color: palette.muted }}
-            >
-              secure-shell — ravi@portfolio:~
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+              <span
+                className="ml-2 font-mono text-[11px] sm:text-xs font-semibold truncate hidden sm:inline"
+                style={{ color: palette.muted }}
+              >
+                ravi@portfolio:~ // {heroView === '3d' ? '3d-quantum-core' : 'secure-shell'}
+              </span>
+            </div>
+
+            {/* Toggle Switcher Buttons */}
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setHeroView('3d')}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  heroView === '3d'
+                    ? 'bg-cyan-500 text-slate-950 shadow-[0_0_12px_rgba(6,182,212,0.6)] font-extrabold'
+                    : 'text-slate-400 hover:text-white bg-white/5 hover:bg-white/10'
+                }`}
+              >
+                <span>❖</span> 3D Core
+              </button>
+              <button
+                type="button"
+                onClick={() => setHeroView('shell')}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  heroView === 'shell'
+                    ? 'bg-cyan-500 text-slate-950 shadow-[0_0_12px_rgba(6,182,212,0.6)] font-extrabold'
+                    : 'text-slate-400 hover:text-white bg-white/5 hover:bg-white/10'
+                }`}
+              >
+                <span>&gt;_</span> Terminal
+              </button>
+            </div>
           </div>
-          {/* Terminal content */}
-          <div className="min-h-[240px] sm:min-h-[260px] px-3.5 sm:px-5 py-4 sm:py-5 font-mono text-xs sm:text-sm relative flex flex-col">
+
+          {/* Interactive 3D Real-time Core View */}
+          {heroView === '3d' ? (
+            <div className="relative flex flex-col items-center justify-between p-3 min-h-[300px] sm:min-h-[340px]">
+              <HeroScene3D className="!h-[270px] sm:!h-[310px]" />
+              <div className="w-full flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/50 border border-cyan-500/25 text-[10px] sm:text-[11px] font-mono text-cyan-300 backdrop-blur-md">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  CORE: QUANTUM_NEXUS
+                </span>
+                <span className="text-slate-400 hidden sm:inline">PBR • REALTIME 3D • 60 FPS</span>
+                <span className="text-cyan-400 font-bold tracking-wider">HOVER / TILT</span>
+              </div>
+            </div>
+          ) : (
+            /* Terminal Shell & Quiz Game Content */
+            <div className="min-h-[240px] sm:min-h-[260px] px-3.5 sm:px-5 py-4 sm:py-5 font-mono text-xs sm:text-sm relative flex flex-col">
             {terminalMode === 'typing' && (
               <>
                 <div className="flex-grow">
@@ -759,6 +806,7 @@ export default function CyberNetworkHero({
               </div>
             )}
           </div>
+          )}
         </div>
       </div>
 
